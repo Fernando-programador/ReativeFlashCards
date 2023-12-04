@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.asl.api.request.UserRequest;
 import com.asl.api.response.UserResponse;
+import com.asl.domain.document.UserDocument;
 import com.asl.domain.service.UserService;
 
 import lombok.AllArgsConstructor;
@@ -36,7 +37,7 @@ public class UserController {
 
 	@PostMapping(value = "/flux", consumes =MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public ResponseEntity<Mono<UserResponse>> create(@RequestBody final UserRequest request){
+	public ResponseEntity<Mono<UserDocument>> create(@RequestBody final UserDocument request){
 		 var newUser = service.create(request)
 				 .doFirst(()-> LOGGER.info("*** is save controller user {}!!", request));
 				 

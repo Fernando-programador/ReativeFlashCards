@@ -27,14 +27,19 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
-	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+	//implementation 'org.mapstruct:mapstruct:1.5.5.Final'
 	// https://mvnrepository.com/artifact/com.github.dozermapper/dozer-core
 	implementation 'com.github.dozermapper:dozer-core:6.5.2'
+	dependencies {
+    // ... outras dependências ...
+    implementation 'javax.xml.bind:jaxb-api:2.3.3' // Versão pode variar, consulte a versão mais recente
+}
+	
 	
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	//annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
-	annotationProcessor 'org.projectlombok:lombok-mapstruct-blinding:0.2.0'
+	//annotationProcessor 'org.projectlombok:lombok-mapstruct-blinding:0.2.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
 }

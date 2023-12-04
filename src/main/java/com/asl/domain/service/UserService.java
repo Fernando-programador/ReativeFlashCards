@@ -7,11 +7,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.asl.api.mapper.DozerMapper;
 import com.asl.api.mapper.UserMapper;
 import com.asl.api.request.UserRequest;
 import com.asl.api.response.UserResponse;
 import com.asl.domain.document.UserDocument;
 import com.asl.domain.repository.UserRepository;
+import com.github.dozermapper.core.Mapper;
 
 import lombok.AllArgsConstructor;
 import reactor.core.publisher.Mono;
@@ -24,14 +26,11 @@ public class UserService {
 	@Autowired
 	private UserRepository repository;
 	
-
-	private UserMapper mapper;
 	
-	public Mono<UserResponse> create( final UserRequest request){
-		var newUser = repository.save(mapper.toDocument(request))
-				.doFirst(() -> LOGGER.info("*** try to save a follow document {}",request))
-				.map(mapper::toResponse);
-		
-		return newUser;
+	public Mono<UserDocument> create( final UserDocument document){
+		var newUser = repository.save(document)
+				.doOnSuccess(saved -> LOGGER.info("*** try to save a floow document {}", document));
+							
+		return  newUser;
 	}
 }
