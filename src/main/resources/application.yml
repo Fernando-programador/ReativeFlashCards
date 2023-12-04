@@ -1,0 +1,7 @@
+spring:
+  webflux:
+    base-path: /webflux
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/webflux?authSource=admin
+
