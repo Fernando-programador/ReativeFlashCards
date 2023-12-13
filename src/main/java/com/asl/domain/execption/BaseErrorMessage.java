@@ -4,7 +4,6 @@ import java.text.MessageFormat;
 import java.util.ResourceBundle;
 
 import org.apache.commons.lang3.ArrayUtils;
-import org.hibernate.validator.internal.util.privilegedactions.GetResource;
 
 import lombok.RequiredArgsConstructor;
 
@@ -13,13 +12,15 @@ public class BaseErrorMessage {
 
 	private final String DEFAULT_RESOURCE = "messages";
 	
-	private static final BaseErrorMessage GENERIC_EXECPTION = new BaseErrorMessage();
-	private static final BaseErrorMessage GENERIC_NOT_FOUND = new BaseErrorMessage();
-	private static final BaseErrorMessage GENERIC_METHOD_NOT_ALLOW = new BaseErrorMessage();
+	public static final BaseErrorMessage GENERIC_EXECPTION = new BaseErrorMessage("generic");
+	public static final BaseErrorMessage GENERIC_NOT_FOUND = new BaseErrorMessage("generic.notFound");
+	public static final BaseErrorMessage GENERIC_METHOD_NOT_ALLOW = new BaseErrorMessage("generic.methodNotAllow");
+	public static final BaseErrorMessage GENERIC_BAD_REQUEST = new BaseErrorMessage("generic.badRequest");
 			
-	
-	
 	private final String key;
+	
+	
+	
 	private String[] params;
 	
 	public BaseErrorMessage params(final String... params) {
@@ -27,6 +28,8 @@ public class BaseErrorMessage {
 		return this;
 		
 	}
+	
+	
 	
 	public String getMessage() {
 		var message = tryGetMessageFromBundle();
