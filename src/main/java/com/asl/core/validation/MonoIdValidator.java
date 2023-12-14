@@ -9,10 +9,9 @@ import org.slf4j.LoggerFactory;
 import io.micrometer.common.util.StringUtils;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import lombok.extern.slf4j.Slf4j;
 
 
-@Slf4j
+
 public class MonoIdValidator implements ConstraintValidator<MongoId, String>{
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MonoIdValidator.class);
